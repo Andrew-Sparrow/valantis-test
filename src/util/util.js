@@ -1,20 +1,17 @@
 import { md5 } from 'md5';
-import 'dotenv/config';
-
 
 const getMD5 = (data) => {
   return md5(data);
 };
 
-const getPassword = () => {
-  console.log(process.env.PASSWORD)
-  return process.env.PASSWORD;
+export const getPassword = () => {
+  console.log(new Date().getFullYear().toString()  + (new Date().getMonth() + 1).toString() + new Date().getDate().toString());
+  // console.log(new Date().getMonth() + 1);
+  return process.env.REACT_APP_PASSWORD;
 }
-
-getPassword();
 
 const Util = {
 
 }
 
-export default Util;
+// export default Util;

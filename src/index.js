@@ -7,6 +7,10 @@ import { Normalize } from 'styled-normalize'; // https://www.npmjs.com/package/s
 import App from './App';
 import './styles/index.scss';
 import { getAxiosInstance } from './services/api';
+import { getPassword } from './util/util';
+
+
+getPassword();
 
 
 const api = getAxiosInstance();
