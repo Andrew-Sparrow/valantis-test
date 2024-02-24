@@ -1,8 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { configureStore } from '@reduxjs/toolkit';
+import { Provider } from 'react-redux';
+import { Normalize } from 'styled-normalize'; // https://www.npmjs.com/package/styled-normalize
+
 import App from './App';
 import './styles/index.scss';
-import { Normalize } from 'styled-normalize'
+import { getAxiosInstance } from './services/api';
+
+
+const api = getAxiosInstance();
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
