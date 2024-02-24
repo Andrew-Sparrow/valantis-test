@@ -1,17 +1,15 @@
-import { md5 } from 'md5';
+import md5 from 'md5';
+import moment from 'moment';
+
 
 const getMD5 = (data) => {
   return md5(data);
 };
 
-export const getPassword = () => {
-  console.log(new Date().getFullYear().toString()  + (new Date().getMonth() + 1).toString() + new Date().getDate().toString());
-  // console.log(new Date().getMonth() + 1);
-  return process.env.REACT_APP_PASSWORD;
+const getPassword = () => {
+  return process.env.REACT_APP_PASSWORD + '_' + moment().format('YYYYMMDD');
 }
 
-const Util = {
-
-}
-
-// export default Util;
+export const getHashMD5 = () => {
+  return getMD5(getPassword());
+};
