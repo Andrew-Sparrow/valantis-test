@@ -1,0 +1,67 @@
+@import "../../styles/variables.scss";
+
+.app {
+  width: 320px;
+  color: $white;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: $black;
+  padding-top: 32px;
+
+  .main {
+    padding-bottom: 54px;
+  }
+
+  .main,
+  .title {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .title {
+    font-size: 32px;
+    font-weight: 500;
+    margin-bottom: 21px;
+  }
+}
+
+@media (min-width: $tablet-width) {
+  .app {
+    width: 768px;
+    box-sizing: border-box;
+
+    .main,
+    .title {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+}
+
+@media (min-width: $desktop-width) {
+  .app {
+    width: 1920px;
+    padding-top: 0;
+
+    .main {
+      width: 1528px;
+      padding-left: 72px;
+      padding-right: 72px;
+      padding-bottom: 146px;
+    }
+
+    .title {
+      font-size: 40px;
+      padding-top: 56px;
+      padding-left: 0;
+      padding-right: 0;
+      margin: 0;
+      margin-left: 72px;
+      margin-bottom: 40px;
+    }
+
+    &__wrapper {
+      display: flex;
+    }
+  }
+}
