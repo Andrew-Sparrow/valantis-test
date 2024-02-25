@@ -2,7 +2,7 @@ import React from 'react';
 import { useSelector } from 'react-redux';
 
 import { getIsShipsLoading } from '../../store/ships/selectors';
-import { Ship } from '../ship/ship';
+import { Ship } from '../product/product';
 import { LoadingScreen } from '../loading-screen/loading-screen';
 import styles from './ship-list.module.scss';
 

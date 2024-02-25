@@ -1,6 +1,6 @@
 @import "../../styles/variables.scss";
 
-.ship {
+.product {
   color: $white;
   text-decoration: none;
   padding: 0;
@@ -43,13 +43,13 @@
 }
 
 @media (min-width: $tablet-width) {
-  .ship__item {
+  .product__item {
     width: 100%;
   }
 }
 
 @media (min-width: $tablet-width) {
-  .ship {
+  .product {
     &__item {
       padding-left: 32px;
       padding-right: 32px;
