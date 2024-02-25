@@ -8,7 +8,7 @@ import styles from './product-list.module.scss';
 
 
 const ProductList = ({ currentItems }) => {
-  // const isproductsLoading = useSelector(getIsproductsLoading);
+  // const isProductsLoading = useSelector(getIsProductsLoading);
   const isProductsLoading = false;
 
   if (isProductsLoading) {

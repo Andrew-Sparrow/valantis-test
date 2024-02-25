@@ -4,7 +4,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import { Normalize } from 'styled-normalize'; // https://www.npmjs.com/package/styled-normalize
 
-import App from './App';
+import { App } from './components/app/app';
 import './styles/index.scss';
 import { getAxiosInstance } from './services/api';
 import { getHashMD5 } from './util/util';
