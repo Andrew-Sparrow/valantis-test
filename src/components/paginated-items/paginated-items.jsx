@@ -75,6 +75,7 @@ const products = [
   },
 ];
 
+
 const ITEMS_PER_PAGE = 3;
 
 const PaginatedItems = () => {
@@ -84,6 +85,8 @@ const PaginatedItems = () => {
   const [currentItemsOnPage, setCurrentItemsOnPage] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
+
+  // const pageCount = Math.ceil(items.length / ITEMS_PER_PAGE);
 
   useEffect(() => {
     const endOffset = itemOffset + ITEMS_PER_PAGE;

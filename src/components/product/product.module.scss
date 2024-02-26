@@ -20,6 +20,7 @@
 
   &__item:hover {
     background-color: $color-hover-bg;
+    cursor: pointer;
   }
 
   &__title {
