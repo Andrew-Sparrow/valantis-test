@@ -1,0 +1,50 @@
+@import '../../styles/variables.scss';
+
+.pagination {
+  display: flex;
+  list-style: none;
+  outline: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+}
+
+.pagination .active a {
+  color: $white;
+  cursor: default;
+}
+
+.pagination li a {
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+}
+
+.pagination .active a:focus,
+.pagination .active span:focus {
+  outline: $white;
+}
+
+.pagination .previous.disabled a,
+.pagination .next.disabled a {
+  color: #dfdfdf;
+  cursor: default;
+  opacity: 0.3;
+}
+
+.previous-link
+.next-link {
+  display: block;
+  transition: all .2s ease-in-out;
+}
+
+.page-item {
+  box-sizing: border-box;
+  padding-bottom: 5px;
+}
+
+.pagination .previous.disabled a:hover,
+.pagination .next.disabled a:hover {
+  color: #dfdfdf;
+  cursor: default;
+}

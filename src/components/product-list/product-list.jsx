@@ -1,7 +1,7 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 
-// import { getIsproductsLoading } from '../../store/products/selectors';
+// import { getIsProductsLoading } from '../../store/products/selectors';
 import { Product } from '../product/product';
 import { LoadingScreen } from '../loading-screen/loading-screen';
 import styles from './product-list.module.scss';
@@ -25,9 +25,9 @@ const ProductList = ({ currentItems }) => {
           <Product
             id={product.id}
             key={product.id}
-            type={product.type}
             name={product.name}
-            port={product.home_port}
+            brand={product.brand}
+            price={product.price}
             />)
           :
           <p style={{textAlign: 'center'}}>There are no products to show</p>
