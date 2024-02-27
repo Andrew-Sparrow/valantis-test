@@ -36,13 +36,16 @@ export const fetchAllProductIDs = () => (dispatch, _getState, api) => (
 export const fetchCurrentProducts = (requestCurrentIDs) => (dispatch, _getState, api) => (
   api.post('/', requestCurrentIDs)
     .then(({data}) => {
+      const uniqueIDs = Array.from(new Set(data.result));
+
       return api.post('/', {
         "action": "get_items",
-        "params": {"ids": Array.from(new Set(data.result))}
+        "params": {"ids": uniqueIDs}
       })
     })
     .then(({data}) => {
-      dispatch(loadCurrentItemsOnPage(Array.from(new Set(data.result))));
+      console.log(data);
+      dispatch(loadCurrentItemsOnPage(data.result));
     })
     .catch((err) => {
       console.log(err.message);

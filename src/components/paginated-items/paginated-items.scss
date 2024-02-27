@@ -12,10 +12,15 @@
 .pagination .active a {
   color: $white;
   cursor: default;
+  border-radius: 3px;
+  border: 1px solid #ffffff;
 }
 
 .pagination li a {
-  padding: 5px 10px;
+  padding-top: 7px;
+  padding-bottom: 3px;
+  padding-left: 10px;
+  padding-right: 10px;
   outline: none;
   cursor: pointer;
 }
@@ -40,7 +45,7 @@
 
 .page-item {
   box-sizing: border-box;
-  padding-bottom: 5px;
+  padding-bottom: 2px;
 }
 
 .pagination .previous.disabled a:hover,

@@ -8,7 +8,7 @@ import iconChevronRightSVG from '../../img/icons/Chevron_Right.svg';
 import iconChevronLeftSVG from '../../img/icons/Chevron_Left.svg';
 
 import {ProductList} from '../product-list/product-list';
-import {getAllProductIDs, getProductItemsOnPage} from '../../store/products/selectors';
+import {getAllProductIDs, getIsProductItemsLoading, getProductItemsOnPage} from '../../store/products/selectors';
 import {fetchCurrentProducts} from '../../store/api-actions';
 import {ITEMS_PER_PAGE} from '../../const';
 import {setIsCurrentItemsLoading, setOffset} from '../../store/actions';
@@ -35,48 +35,35 @@ const IconChevronRight = () => (
 
 const PaginatedItems = () => {
   const allProductIds = useSelector(getAllProductIDs);
+  const [itemOffset, setItemOffset] = useState(0);
+
+  // Simulate fetching items from another resources.
+  // (This could be items from props; or items loaded in a local state
+  // from an API endpoint with useEffect and useState)
+
   const currentItems = useSelector(getProductItemsOnPage);
   const dispatch = useDispatch();
 
-  // const [currentItemsOnPage, setCurrentItemsOnPage] = useState([]);
-  // const [pageCount, setPageCount] = useState(0);
-  // const [itemOffset, setItemOffset] = useState(0);
-
-  // let itemOffset = 0;
-
-  // dispatch(fetchCurrentProducts({
-  //   "action": "get_ids",
-  //   "params": {"offset": itemOffset, "limit": ITEMS_PER_PAGE}
-  // }));
-
-  // useEffect(() => {
-  //   const endOffset = itemOffset + ITEMS_PER_PAGE;
-  //   setCurrentItemsOnPage(items.slice(itemOffset, endOffset));
-  //   setPageCount(Math.ceil(items.length / ITEMS_PER_PAGE));
-  // }, [items, itemOffset]);
-
-  // useEffect(() => {
-  //   dispatch(fetchCurrentProducts({
-  //     "action": "get_ids",
-  //     "params": {"offset": itemOffset, "limit": ITEMS_PER_PAGE}
-  // }));
-  // }, [itemOffset]);
-
-  // const endOffset = itemOffset + ITEMS_PER_PAGE;
-  // const currentItemsOnPage = items.slice(itemOffset, endOffset);
   const pageTotalAmount = Math.ceil(allProductIds.length / ITEMS_PER_PAGE);
+
+  useEffect(() => {
+    dispatch(fetchCurrentProducts({
+      "action": "get_ids",
+      "params": {"offset": itemOffset, "limit": ITEMS_PER_PAGE}
+    }))
+  }, [itemOffset]);
 
   const handlePageClick = (event) => {
     dispatch(setIsCurrentItemsLoading(true));
-    // const newItemOffset = (event.selected * ITEMS_PER_PAGE) % allProductIds.length;
     const newOffset = event.selected * (ITEMS_PER_PAGE % allProductIds.length);
-    // setItemOffset(newItemOffset);
-    dispatch(fetchCurrentProducts({
-      "action": "get_ids",
-      "params": {"offset": newOffset, "limit": ITEMS_PER_PAGE}
-    }));
-
-    dispatch(setOffset(newOffset));
+    console.log(
+      `User requested page number ${event.selected}, which is offset ${newOffset}`
+    );
+    // dispatch(fetchCurrentProducts({
+    //   "action": "get_ids",
+    //   "params": {"offset": newOffset, "limit": ITEMS_PER_PAGE}
+    // }))
+    setItemOffset(newOffset);
   };
 
   return (

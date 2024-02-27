@@ -25,7 +25,7 @@ const store = configureStore({
     })
 });
 
-const currentOffset = store.getState().PRODUCTS.offset;
+// const currentOffset = store.getState().PRODUCTS.offset;
 
 store.dispatch(fetchAllProductIDs());
 
