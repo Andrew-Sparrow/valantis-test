@@ -9,6 +9,7 @@ import { ProductList } from '../product-list/product-list';
 import './paginated-items.scss';
 import iconChevronLeftSVG from '../../img/icons/Chevron_Left.svg';
 import iconChevronRightSVG from '../../img/icons/Chevron_Right.svg';
+import {getAllProductIDs} from '../../store/products/selectors';
 
 
 // TODO css class names modules
@@ -79,14 +80,12 @@ const products = [
 const ITEMS_PER_PAGE = 3;
 
 const PaginatedItems = () => {
-  // const items = useSelector(getFilteredShips);
-  const items = products;
+  const items = useSelector(getAllProductIDs);
 
   const [currentItemsOnPage, setCurrentItemsOnPage] = useState([]);
   const [pageCount, setPageCount] = useState(0);
   const [itemOffset, setItemOffset] = useState(0);
 
-  // const pageCount = Math.ceil(items.length / ITEMS_PER_PAGE);
 
   useEffect(() => {
     const endOffset = itemOffset + ITEMS_PER_PAGE;
@@ -109,7 +108,7 @@ const PaginatedItems = () => {
           onPageChange={handlePageClick}
           containerClassName="pagination"
           pageRangeDisplayed={0}
-          marginPagesDisplayed={0}
+          marginPagesDisplayed={1}
           pageCount={pageCount}
           pageClassName="page-item"
           pageLinkClassName="page-link"
