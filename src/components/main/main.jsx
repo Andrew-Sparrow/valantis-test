@@ -2,7 +2,6 @@ import styles from './main.module.scss';
 import {PaginatedItems} from '../paginated-items/paginated-items';
 
 
-
 const Main = () => {
   return (
     <div className={styles.app}>
