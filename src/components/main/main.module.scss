@@ -1,7 +1,12 @@
 @import "../../styles/variables.scss";
 
+.container {
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 .app {
-  width: 320px;
+  width: 300px;
   color: $white;
   margin-left: auto;
   margin-right: auto;
@@ -20,13 +25,6 @@
     padding-bottom: 54px;
   }
 
-  .author,
-  .main,
-  .title {
-    padding-left: 8px;
-    padding-right: 8px;
-  }
-
   .title {
     font-size: 32px;
     font-weight: 500;
@@ -36,25 +34,18 @@
 
 @media (min-width: $tablet-width) {
   .app {
-    width: 768px;
+    width: 748px;
     box-sizing: border-box;
-
-    .author,
-    .main,
-    .title {
-      padding-left: 20px;
-      padding-right: 20px;
-    }
   }
 }
 
 @media (min-width: $desktop-width) {
   .app {
-    width: 1920px;
+    width: 1900px;
     padding-top: 0;
 
     .main {
-      width: 1528px;
+      width: 1508px;
       padding-left: 72px;
       padding-right: 72px;
       padding-bottom: 146px;
