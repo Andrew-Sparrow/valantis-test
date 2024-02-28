@@ -7,7 +7,7 @@ import styles from './pagination.module.scss';
 import iconChevronRightSVG from '../../img/icons/Chevron_Right.svg';
 import iconChevronLeftSVG from '../../img/icons/Chevron_Left.svg';
 
-import {getAllProductIDs, getIsAllProductIDsLoading, getIsCurrentItemsLoading} from '../../store/products/selectors';
+import {getAllProductIDs, getIsAllProductIDsLoading, getIsCurrentItemsLoading, getIsInitialItemsLoading} from '../../store/products/selectors';
 import {fetchCurrentProducts} from '../../store/api-actions';
 import {ITEMS_PER_PAGE} from '../../const';
 import {setIsCurrentItemsLoading} from '../../store/actions';
@@ -34,6 +34,9 @@ const IconChevronRight = () => (
 
 const Pagination = () => {
   const allProductIds = useSelector(getAllProductIDs);
+  const isAllProductIDsLoading = useSelector(getIsAllProductIDsLoading);
+  const isInitialItemsLoading = useSelector(getIsInitialItemsLoading);
+
   const [itemOffset, setItemOffset] = useState(0);
   const [currentPageNumber, setCurrentPageNumber] = useState(0);
 
@@ -57,7 +60,8 @@ const Pagination = () => {
   };
 
   return (
-    <div className={ isCurrentItemsLoading ? `${styles.loading}` : ``}>
+    <div className={ isCurrentItemsLoading ? styles.loading : ``}>
+      {isAllProductIDsLoading || isInitialItemsLoading ? '' :
         <ReactPaginate
           previousLabel={<IconChevronLeft />}
           nextLabel={<IconChevronRight />}
@@ -78,6 +82,7 @@ const Pagination = () => {
           disabledLinkClassName={styles.disabled_link}
           disableInitialCallback={isCurrentItemsLoading}
         />
+      }
     </div>
   );
 };

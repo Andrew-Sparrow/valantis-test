@@ -26,7 +26,7 @@ const ProductList = ({currentItems}) => {
             <Product
               id={product.id}
               key={product.id}
-              name={product.name}
+              name={product.product}
               brand={product.brand}
               price={product.price}
             />)

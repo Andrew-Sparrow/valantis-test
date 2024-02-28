@@ -16,6 +16,7 @@
     padding-bottom: 24px;
     transition: all 0.2s ease-in-out;
     margin-top: 8px;
+    line-height: 26px;
   }
 
   &__item:hover {
@@ -32,15 +33,22 @@
 
   &__detail {
     display: inline-block;
-    width: 40px;
-    margin-right: 24px;
+    width: 65px;
+    padding-right: 20px;
     color: $color-detail-name;
   }
 
+  &__id,
   &__paragraph {
     margin: 0;
     margin-top: 16px;
+    padding-right: 20px;
   }
+
+  &__info {
+    word-break: break-word;
+  }
+
 }
 
 @media (min-width: $tablet-width) {
@@ -65,8 +73,12 @@
 
     &__wrapper {
       justify-content: space-between;
-      width: 396px;
+      max-width: 600px;
       display: flex;
+    }
+
+    &__id {
+      width: 370px;
     }
   }
 }
