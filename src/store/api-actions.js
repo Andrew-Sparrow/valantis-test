@@ -33,7 +33,10 @@ export const fetchAllProductIDs = () => (dispatch, _getState, api) => (
 export const fetchCurrentProducts = (requestCurrentIDs) => (dispatch, _getState, api) => (
   api.post('/', requestCurrentIDs)
     .then(({data}) => {
-      const uniqueIDs = Array.from(new Set(data.result));
+      let uniqueIDs = [];
+      if (data.result) {
+        uniqueIDs = Array.from(new Set(data.result));
+      }
 
       return api.post('/', {
         "action": "get_items",

@@ -10,7 +10,7 @@ const PaginatedItems = () => {
 
   return (
     <>
-      <ProductList currentItems={currentItems} />
+      <ProductList currentItems={currentItems}/>
       <Pagination/>
     </>
   );

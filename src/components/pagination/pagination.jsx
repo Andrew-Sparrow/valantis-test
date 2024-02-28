@@ -7,7 +7,7 @@ import './pagination.scss';
 import iconChevronRightSVG from '../../img/icons/Chevron_Right.svg';
 import iconChevronLeftSVG from '../../img/icons/Chevron_Left.svg';
 
-import {getAllProductIDs, getIsCurrentItemsLoading} from '../../store/products/selectors';
+import {getAllProductIDs, getIsAllProductIDsLoading, getIsCurrentItemsLoading} from '../../store/products/selectors';
 import {fetchCurrentProducts} from '../../store/api-actions';
 import {ITEMS_PER_PAGE} from '../../const';
 import {setIsCurrentItemsLoading} from '../../store/actions';
@@ -35,6 +35,7 @@ const IconChevronRight = () => (
 const Pagination = () => {
   const allProductIds = useSelector(getAllProductIDs);
   const [itemOffset, setItemOffset] = useState(0);
+  const [currentPageNumber, setCurrentPageNumber] = useState(0);
 
   const isCurrentItemsLoading = useSelector(getIsCurrentItemsLoading);
   const dispatch = useDispatch();
@@ -46,7 +47,7 @@ const Pagination = () => {
       "action": "get_ids",
       "params": {"offset": itemOffset, "limit": ITEMS_PER_PAGE}
     }))
-  }, [itemOffset, isCurrentItemsLoading, dispatch]);
+  }, [itemOffset, isCurrentItemsLoading]);
 
   // example https://www.npmjs.com/package/react-paginate
   const handlePageClick = (event) => {
@@ -57,7 +58,6 @@ const Pagination = () => {
 
   return (
     <>
-      {allProductIds.length > ITEMS_PER_PAGE ?
         <ReactPaginate
           previousLabel={<IconChevronLeft />}
           nextLabel={<IconChevronRight />}
@@ -76,8 +76,8 @@ const Pagination = () => {
           renderOnZeroPageCount={null}
           disabledClassName="disabled"
           disabledLinkClassName="disabled-link"
-        />: ''
-      }
+          disableInitialCallback={isCurrentItemsLoading}
+        />
     </>
   );
 };

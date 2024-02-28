@@ -31,7 +31,8 @@
 }
 
 .pagination .previous.disabled a,
-.pagination .next.disabled a {
+.pagination .next.disabled a,
+.disabled-link {
   color: #dfdfdf;
   cursor: default;
   opacity: 0.3;
