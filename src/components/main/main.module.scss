@@ -8,10 +8,19 @@
   background-color: $black;
   padding-top: 32px;
 
+  .author {
+    color: $color-detail-name;
+  }
+
+  .author:hover {
+    color: $color-label;
+  }
+
   .main {
     padding-bottom: 54px;
   }
 
+  .author,
   .main,
   .title {
     padding-left: 8px;
@@ -30,6 +39,7 @@
     width: 768px;
     box-sizing: border-box;
 
+    .author,
     .main,
     .title {
       padding-left: 20px;
