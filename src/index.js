@@ -9,8 +9,7 @@ import './styles/index.scss';
 import {getAxiosInstance} from './services/api';
 import rootReducer from './store/root-reducer';
 
-import {fetchAllProductIDs, fetchCurrentProducts} from './store/api-actions';
-import { ITEMS_PER_PAGE } from './const';
+import {fetchAllProductIDs} from './store/api-actions';
 
 
 const api = getAxiosInstance();
@@ -26,10 +25,6 @@ const store = configureStore({
 });
 
 store.dispatch(fetchAllProductIDs());
-// store.dispatch(fetchCurrentProducts({
-//   "action": "get_ids",
-//   "params": {"offset": 0, "limit": ITEMS_PER_PAGE}
-// }));
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
