@@ -1,4 +1,4 @@
-import React, {useSelector} from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom/client';
 import {configureStore} from '@reduxjs/toolkit';
 import {Provider} from 'react-redux';
@@ -9,8 +9,7 @@ import './styles/index.scss';
 import {getAxiosInstance} from './services/api';
 import rootReducer from './store/root-reducer';
 
-import {fetchAllProductIDs, fetchCurrentProducts} from './store/api-actions';
-import { ITEMS_PER_PAGE } from './const';
+import {fetchAllProductIDs} from './store/api-actions';
 
 
 const api = getAxiosInstance();
@@ -25,15 +24,7 @@ const store = configureStore({
     })
 });
 
-// const currentOffset = store.getState().PRODUCTS.offset;
-
 store.dispatch(fetchAllProductIDs());
-
-// store.dispatch(fetchCurrentProducts({
-//   "action": "get_ids",
-//   "params": {"offset": currentOffset, "limit": ITEMS_PER_PAGE}
-// }));
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
