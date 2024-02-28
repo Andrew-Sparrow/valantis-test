@@ -1,5 +1,9 @@
 @import '../../styles/variables.scss';
 
+.loading {
+  opacity: 0.6;
+}
+
 .pagination {
   display: flex;
   list-style: none;
@@ -32,19 +36,19 @@
 
 .pagination .previous.disabled a,
 .pagination .next.disabled a,
-.disabled-link {
+.disabled_link {
   color: #dfdfdf;
   cursor: default;
   opacity: 0.3;
 }
 
-.previous-link
-.next-link {
+.previous_link
+.next_link {
   display: block;
   transition: all .2s ease-in-out;
 }
 
-.page-item {
+.page_item {
   box-sizing: border-box;
   padding-bottom: 2px;
 }

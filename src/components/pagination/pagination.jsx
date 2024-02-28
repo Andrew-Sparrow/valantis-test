@@ -3,7 +3,7 @@ import ReactPaginate from 'react-paginate';
 import {useSelector, useDispatch} from 'react-redux';
 import {HandySvg} from 'handy-svg';
 
-import './pagination.scss';
+import styles from './pagination.module.scss';
 import iconChevronRightSVG from '../../img/icons/Chevron_Right.svg';
 import iconChevronLeftSVG from '../../img/icons/Chevron_Left.svg';
 
@@ -57,28 +57,28 @@ const Pagination = () => {
   };
 
   return (
-    <>
+    <div className={ isCurrentItemsLoading ? `${styles.loading}` : ``}>
         <ReactPaginate
           previousLabel={<IconChevronLeft />}
           nextLabel={<IconChevronRight />}
           onPageChange={handlePageClick}
-          containerClassName="pagination"
+          containerClassName={styles.pagination}
           pageRangeDisplayed={0}
           marginPagesDisplayed={1}
           pageCount={pageTotalAmount}
-          pageClassName="page-item"
-          pageLinkClassName="page-link"
-          previousClassName="previous"
-          previousLinkClassName="previous-link"
-          nextClassName="next"
-          nextLinkClassName="next-link"
-          activeClassName="active"
+          pageClassName={styles.page_item}
+          pageLinkClassName={styles.page_link}
+          previousClassName={styles.previous}
+          previousLinkClassName={styles.previous_link}
+          nextClassName={styles.next}
+          nextLinkClassName={styles.next_link}
+          activeClassName={styles.active}
           renderOnZeroPageCount={null}
-          disabledClassName="disabled"
-          disabledLinkClassName="disabled-link"
+          disabledClassName={styles.disabled}
+          disabledLinkClassName={styles.disabled_link}
           disableInitialCallback={isCurrentItemsLoading}
         />
-    </>
+    </div>
   );
 };
 
