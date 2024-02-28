@@ -4,4 +4,4 @@ export const getAllProductIDs = (state) => state[NameSpace.PRODUCTS].allProductI
 export const getIsAllProductIDsLoading = (state) => state[NameSpace.PRODUCTS].isAllProductIDsLoading;
 
 export const getProductItemsOnPage = (state) => state[NameSpace.PRODUCTS].productItemsOnPage;
-export const getIsProductItemsLoading = (state) => state[NameSpace.PRODUCTS].isProductItemsOnPageLoading;
+export const getIsProductItemsLoading = (state) => state[NameSpace.PRODUCTS].setIsCurrentItemsLoading;
