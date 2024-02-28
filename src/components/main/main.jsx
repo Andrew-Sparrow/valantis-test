@@ -1,5 +1,6 @@
 import styles from './main.module.scss';
 import {PaginatedItems} from '../paginated-items/paginated-items';
+import {Filter} from '../filter/filter';
 
 
 const Main = () => {
@@ -8,6 +9,7 @@ const Main = () => {
       <div className={styles.app}>
         <a className={styles.author} href="https://github.com/Andrew-Sparrow" target='_blank' rel='noreferrer'>Produced by Andrew Pechersky</a>
         <h1 className={styles.title}>Products</h1>
+        <Filter />
         <main className={styles.main}>
           <PaginatedItems />
         </main>
