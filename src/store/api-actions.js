@@ -2,6 +2,8 @@ import {
   loadAllProductIDs, loadCurrentItemsOnPage,
 } from './actions';
 
+import { getUniqueObjectsByID } from '../util/util';
+
 
 const requestDataAllIDs = {
 	"action": "get_ids",
@@ -13,11 +15,6 @@ const requestDataAllIDs = {
 // 	"action": "get_ids",
 // 	"params": {"offset": 0, "limit": 3}
 // }
-
-const requestCurrentItems = {
-  "action": "get_items",
-  "params": {"ids": ["1789ecf3-f81c-4f49-ada2-83804dcc74b0"]}
-};
 
 export const fetchAllProductIDs = () => (dispatch, _getState, api) => (
   api.post('/', requestDataAllIDs)
@@ -44,10 +41,24 @@ export const fetchCurrentProducts = (requestCurrentIDs) => (dispatch, _getState,
       })
     })
     .then(({data}) => {
-      console.log(data);
-      dispatch(loadCurrentItemsOnPage(data.result));
+      const listUniqueObj = getUniqueObjectsByID(data.result);
+      dispatch(loadCurrentItemsOnPage(listUniqueObj));
     })
     .catch((err) => {
       console.log(err.message);
+
+      api.post('/', requestCurrentIDs)
+      .then(({data}) => {
+        const uniqueIDs = Array.from(new Set(data.result));
+
+        return api.post('/', {
+          "action": "get_items",
+          "params": {"ids": uniqueIDs}
+        })
+      })
+      .then(({data}) => {
+        const listUniqueObj = getUniqueObjectsByID(data.result);
+        dispatch(loadCurrentItemsOnPage(listUniqueObj));
+      })
     })
 );

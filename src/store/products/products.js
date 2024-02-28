@@ -1,13 +1,14 @@
 import { createReducer } from '@reduxjs/toolkit';
 
 import {
-  loadAllProductIDs, loadCurrentItemsOnPage,
+  loadAllProductIDs,
+  loadCurrentItemsOnPage,
+  setIsCurrentItemsLoading
 } from '../actions';
 
 const initialState = {
   allProductIDs: [],
   productItemsOnPage: [],
-  offset: 0,
   isAllProductIDsLoading: true,
   isProductItemsOnPageLoading: true,
 };
@@ -21,6 +22,9 @@ const products = createReducer(initialState, (builder) => {
     .addCase(loadCurrentItemsOnPage, (state, action) => {
       state.productItemsOnPage = [...action.payload];
       state.isProductItemsOnPageLoading = false;
+    })
+    .addCase(setIsCurrentItemsLoading, (state, action) => {
+      state.setIsCurrentItemsLoading = action.payload;
     })
   });
 
