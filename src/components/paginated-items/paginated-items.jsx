@@ -47,7 +47,7 @@ const PaginatedItems = () => {
       "action": "get_ids",
       "params": {"offset": itemOffset, "limit": ITEMS_PER_PAGE}
     }))
-  }, [itemOffset]);
+  }, [itemOffset, dispatch]);
 
   // example https://www.npmjs.com/package/react-paginate
   const handlePageClick = (event) => {
