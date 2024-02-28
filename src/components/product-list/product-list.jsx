@@ -4,14 +4,14 @@ import { useSelector } from 'react-redux';
 import { Product } from '../product/product';
 import { LoadingScreen } from '../loading-screen/loading-screen';
 import styles from './product-list.module.scss';
-import {getIsAllProductIDsLoading, getIsProductItemsLoading} from '../../store/products/selectors';
+import {getIsAllProductIDsLoading, getIsInitialItemsLoading} from '../../store/products/selectors';
 
 
 const ProductList = ({ currentItems }) => {
   const isAllProductIDsLoading = useSelector(getIsAllProductIDsLoading);
-  const isCurrentItemsLoading = useSelector(getIsProductItemsLoading);
+  const isInitialItemsLoading = useSelector(getIsInitialItemsLoading);
 
-  if (isAllProductIDsLoading && isCurrentItemsLoading) {
+  if (isAllProductIDsLoading || isInitialItemsLoading) {
     return (
       <LoadingScreen />
     );

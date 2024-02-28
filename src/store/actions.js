@@ -3,7 +3,8 @@ import { createAction } from '@reduxjs/toolkit';
 export const ActionType = {
   LOAD_ALL_PRODUCT_IDS: 'products/loadAllProductIDs',
   LOAD_CURRENT_ITEMS_ON_PAGE: 'products/loadCurrentItemsOnPage',
-  SET_IS_CURRENT_ITEMS_LOADING: 'products/isCurrentItemsLoading'
+  SET_IS_CURRENT_ITEMS_LOADING: 'products/isCurrentItemsLoading',
+  SET_IS_INITIAL_ITEMS_LOADING: 'products/isInitialItemsLoading',
 };
 
 export const loadAllProductIDs = createAction(

@@ -10,7 +10,8 @@ const initialState = {
   allProductIDs: [],
   productItemsOnPage: [],
   isAllProductIDsLoading: true,
-  setIsCurrentItemsLoading: true,
+  isCurrentItemsLoading: true,
+  isInitialItemsLoading: true
 };
 
 const products = createReducer(initialState, (builder) => {
@@ -21,10 +22,11 @@ const products = createReducer(initialState, (builder) => {
     })
     .addCase(loadCurrentItemsOnPage, (state, action) => {
       state.productItemsOnPage = [...action.payload];
-      state.setIsCurrentItemsLoading = false;
+      state.isCurrentItemsLoading = false;
+      state.isInitialItemsLoading = false;
     })
     .addCase(setIsCurrentItemsLoading, (state, action) => {
-      state.setIsCurrentItemsLoading = action.payload;
+      state.isCurrentItemsLoading = action.payload;
     })
   });
 
