@@ -21,11 +21,18 @@ const Filter = () => {
           <option value="price">Price</option>
           <option value="brand">Brand</option>
         </select>
-        <input type="text" className={styles.input} />
+        <div className={styles.input_wrapper}>
+          <input
+            className={styles.input} // TODO add styles for active and inactive state for string style
+            type="text"
+            // onChange={handleChangeInputShipName}
+            // value={inputValue}
+          />
+        </div>
       </section>
       <section>
-        <button className={styles.button}>Submit filter</button>
-        <button className={`${ styles.button } ${ styles.button_reset }`}>Reset filter</button>
+        <button className={styles.button}>Reset filter</button>
+        <button className={`${ styles.button } ${ styles.button_submit}`}>Submit filter</button>
       </section>
     </div>
   )
