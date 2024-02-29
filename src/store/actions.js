@@ -5,6 +5,7 @@ export const ActionType = {
   LOAD_CURRENT_ITEMS_ON_PAGE: 'products/loadCurrentItemsOnPage',
   SET_IS_CURRENT_ITEMS_LOADING: 'products/isCurrentItemsLoading',
   SET_IS_INITIAL_ITEMS_LOADING: 'products/isInitialItemsLoading',
+  SET_IS_FILTERED_ITEMS_LOADING: 'products/isFilteredItemsLoading',
   LOAD_FILTERED_ITEMS: 'products/loadFilteredItems',
 };
 
@@ -25,6 +26,11 @@ export const setIsCurrentItemsLoading = createAction(
 
 export const setIsInitialItemsLoading = createAction(
   ActionType.SET_IS_INITIAL_ITEMS_LOADING,
+  (isLoading) => ({ payload: isLoading }),
+);
+
+export const setIsFilteredItemsLoading = createAction( // to Disable Filter Buttons
+  ActionType.SET_IS_FILTERED_ITEMS_LOADING,
   (isLoading) => ({ payload: isLoading }),
 );
 

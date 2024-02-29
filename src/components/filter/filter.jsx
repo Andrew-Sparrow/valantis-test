@@ -1,16 +1,17 @@
 import React , {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {getIsAllProductIDsLoading, getIsInitialItemsLoading} from '../../store/products/selectors';
+import {getIsAllProductIDsLoading, getIsFilteredItemsLoading, getIsInitialItemsLoading} from '../../store/products/selectors';
 import styles from './filter.module.scss';
 import { fetchCurrentProducts } from '../../store/api-actions';
 import { ITEMS_PER_PAGE } from '../../const';
-import {setIsInitialItemsLoading} from '../../store/actions';
+import {setIsFilteredItemsLoading, setIsInitialItemsLoading} from '../../store/actions';
 
 
 const Filter = () => {
   const isAllProductIDsLoading = useSelector(getIsAllProductIDsLoading);
   const isInitialItemsLoading = useSelector(getIsInitialItemsLoading);
+  const isFilteredItemsLoading = useSelector(getIsFilteredItemsLoading);
   const dispatch = useDispatch();
 
   const [inputValue, setInputValue] = useState('');
@@ -34,11 +35,11 @@ const Filter = () => {
   };
 
   const handleButtonResetClick = (evt) => {
-      console.log('handleButtonResetClick');
       setMistakeInfo('');
       setInputValue('');
 
       dispatch(setIsInitialItemsLoading(true));
+      dispatch(setIsFilteredItemsLoading(true));
       dispatch(fetchCurrentProducts({
         "action": "get_ids",
         "params": {"offset": 0, "limit": ITEMS_PER_PAGE}
@@ -49,7 +50,6 @@ const Filter = () => {
     verifyMistake();
     console.log(mistakeInfo);
     console.log(inputValue);
-
   };
 
   const handleSelectChange = (evt) => {
@@ -66,7 +66,7 @@ const Filter = () => {
   return (
     <div className={styles.filter}>
       <p className={styles.mistake}>{mistakeInfo}</p>
-      <section className={styles.row}>
+      <section disabled={isFilteredItemsLoading} className={styles.row}>
         <select name="filters" className={styles.select} onChange={handleSelectChange} value={selectedFilter}>
           <option value="product">Name</option>
           <option value="price">Price</option>
@@ -79,13 +79,14 @@ const Filter = () => {
             onChange={handleChangeInputValue}
             value={inputValue}
             required={true}
+            disabled={isFilteredItemsLoading}
           />
         </div>
       </section>
       <section>
-        <button className={styles.button}
+        <button disabled={isFilteredItemsLoading} className={styles.button}
           onClick={handleButtonResetClick}>Reset filter</button>
-        <button className={`${ styles.button } ${ styles.button_submit}`}
+        <button disabled={isFilteredItemsLoading} className={`${ styles.button } ${ styles.button_submit}`}
           onClick={handleButtonSubmitClick}>Submit filter</button>
       </section>
     </div>
