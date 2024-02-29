@@ -11,7 +11,7 @@
   margin-left: auto;
   margin-right: auto;
   background-color: $black;
-  padding-top: 32px;
+  padding-top: 0;
 
   .author {
     color: $color-detail-name;
@@ -28,6 +28,7 @@
   .title {
     font-size: 32px;
     font-weight: 500;
+    margin-top: 40px;
     margin-bottom: 21px;
   }
 }

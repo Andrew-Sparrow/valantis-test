@@ -7,7 +7,12 @@ const Main = () => {
   return (
     <div className={styles.container}>
       <div className={styles.app}>
-        <a className={styles.author} href="https://github.com/Andrew-Sparrow" target='_blank' rel='noreferrer'>Produced by Andrew Pechersky</a>
+        <p>
+          <a className={styles.author} href="https://github.com/Andrew-Sparrow" target='_blank' rel='noreferrer'>Produced by Andrew Pechersky</a>
+        </p>
+        <p>
+          <a className={styles.author} href="https://github.com/Andrew-Sparrow/valantis-test" target='_blank' rel='noreferrer'>Project description</a>
+        </p>
         <h1 className={styles.title}>Products</h1>
         <Filter />
         <main className={styles.main}>

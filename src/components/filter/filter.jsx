@@ -11,22 +11,41 @@ const Filter = () => {
 
   const [inputValue, setInputValue] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('name');
+  const [mistakeInfo, setMistakeInfo] = useState('');
+
+  const verifyMistake = () => {
+    if (selectedFilter === 'price' && isNaN(inputValue)) {
+      setMistakeInfo('Input field should be a number');
+    }
+
+    if(inputValue === '') {
+      setMistakeInfo('Input field should not be empty');
+    }
+  };
 
   const handleChangeInputValue = (evt) => {
-    const value = evt.target.value;
-    setInputValue(value);
+    const inputValue = evt.target.value;
+    setInputValue(inputValue);
+    setMistakeInfo('');
   };
 
   const handleButtonResetClick = (evt) => {
-      console.log('click');
+      console.log('handleButtonResetClick');
+      setMistakeInfo('');
+      setInputValue('');
   };
 
   const handleButtonSubmitClick = (evt) => {
-      console.log('click');
+    verifyMistake();
+    console.log(mistakeInfo);
+    console.log(inputValue);
   };
 
   const handleSelectChange = (evt) => {
+    verifyMistake();
     setSelectedFilter(evt.target.value);
+    setMistakeInfo('');
+    setInputValue('');
   };
 
   if (isAllProductIDsLoading || isInitialItemsLoading) {
@@ -35,6 +54,7 @@ const Filter = () => {
 
   return (
     <div className={styles.filter}>
+      <p className={styles.mistake}>{mistakeInfo}</p>
       <section className={styles.row}>
         <select name="filters" className={styles.select} onChange={handleSelectChange} value={selectedFilter}>
           <option value="name">Name</option>
