@@ -39,6 +39,7 @@ const Filter = () => {
     verifyMistake();
     console.log(mistakeInfo);
     console.log(inputValue);
+
   };
 
   const handleSelectChange = (evt) => {
@@ -57,7 +58,7 @@ const Filter = () => {
       <p className={styles.mistake}>{mistakeInfo}</p>
       <section className={styles.row}>
         <select name="filters" className={styles.select} onChange={handleSelectChange} value={selectedFilter}>
-          <option value="name">Name</option>
+          <option value="product">Name</option>
           <option value="price">Price</option>
           <option value="brand">Brand</option>
         </select>
