@@ -38,7 +38,6 @@ const Pagination = () => {
   const isInitialItemsLoading = useSelector(getIsInitialItemsLoading);
 
   const [itemOffset, setItemOffset] = useState(0);
-  const [currentPageNumber, setCurrentPageNumber] = useState(0);
 
   const isCurrentItemsLoading = useSelector(getIsCurrentItemsLoading);
   const dispatch = useDispatch();
