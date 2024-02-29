@@ -1,13 +1,17 @@
 import React , {useState} from 'react';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 
 import {getIsAllProductIDsLoading, getIsInitialItemsLoading} from '../../store/products/selectors';
 import styles from './filter.module.scss';
+import { fetchCurrentProducts } from '../../store/api-actions';
+import { ITEMS_PER_PAGE } from '../../const';
+import {setIsInitialItemsLoading} from '../../store/actions';
 
 
 const Filter = () => {
   const isAllProductIDsLoading = useSelector(getIsAllProductIDsLoading);
   const isInitialItemsLoading = useSelector(getIsInitialItemsLoading);
+  const dispatch = useDispatch();
 
   const [inputValue, setInputValue] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('name');
@@ -33,6 +37,12 @@ const Filter = () => {
       console.log('handleButtonResetClick');
       setMistakeInfo('');
       setInputValue('');
+
+      dispatch(setIsInitialItemsLoading(true));
+      dispatch(fetchCurrentProducts({
+        "action": "get_ids",
+        "params": {"offset": 0, "limit": ITEMS_PER_PAGE}
+      }))
   };
 
   const handleButtonSubmitClick = (evt) => {

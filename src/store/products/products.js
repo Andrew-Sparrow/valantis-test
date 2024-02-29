@@ -3,15 +3,17 @@ import { createReducer } from '@reduxjs/toolkit';
 import {
   loadAllProductIDs,
   loadCurrentItemsOnPage,
-  setIsCurrentItemsLoading
+  setIsCurrentItemsLoading,
+  setIsInitialItemsLoading
 } from '../actions';
 
 const initialState = {
   allProductIDs: [],
   productItemsOnPage: [],
+  filteredItems: [],
   isAllProductIDsLoading: true,
   isCurrentItemsLoading: true,
-  isInitialItemsLoading: true
+  isInitialItemsLoading: true,
 };
 
 const products = createReducer(initialState, (builder) => {
@@ -27,6 +29,9 @@ const products = createReducer(initialState, (builder) => {
     })
     .addCase(setIsCurrentItemsLoading, (state, action) => {
       state.isCurrentItemsLoading = action.payload;
+    })
+    .addCase(setIsInitialItemsLoading, (state, action) => {
+      state.isInitialItemsLoading = action.payload;
     })
   });
 
