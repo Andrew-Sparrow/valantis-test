@@ -1,35 +1,13 @@
 import {useState, useEffect} from 'react';
 import ReactPaginate from 'react-paginate';
 import {useSelector, useDispatch} from 'react-redux';
-import {HandySvg} from 'handy-svg';
 
 import styles from './pagination.module.scss';
-import iconChevronRightSVG from '../../img/icons/Chevron_Right.svg';
-import iconChevronLeftSVG from '../../img/icons/Chevron_Left.svg';
-
 import {getAllProductIDs, getIsAllProductIDsLoading, getIsCurrentItemsLoading, getIsInitialItemsLoading} from '../../store/products/selectors';
 import {fetchCurrentProducts} from '../../store/api-actions';
 import {ITEMS_PER_PAGE} from '../../const';
 import {setIsCurrentItemsLoading} from '../../store/actions';
-
-
-const IconChevronLeft = () => (
-  <HandySvg
-    className="prev-icon"
-    src={iconChevronLeftSVG}
-    width="24"
-    height="24"
-  />
-);
-
-const IconChevronRight = () => (
-  <HandySvg
-    className="next-icon"
-    src={iconChevronRightSVG}
-    width="24"
-    height="24"
-  />
-);
+import { IconChevronLeft, IconChevronRight } from '../icon-chevron/Icon-chevron';
 
 
 const Pagination = () => {
