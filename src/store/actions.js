@@ -35,7 +35,7 @@ export const setIsFilterItemsLoading = createAction( // to Disable Filter Button
   (isLoading) => ({ payload: isLoading }),
 );
 
-export const isFilterItemsDisplayed = createAction( // to Disable Filter Buttons
+export const setIsFilterItemsDisplayed = createAction(
   ActionType.SET_IS_FILTER_ITEMS_DISPLAYED,
   (isDisplayed) => ({ payload: isDisplayed }),
 );

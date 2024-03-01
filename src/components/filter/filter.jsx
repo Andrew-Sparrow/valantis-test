@@ -5,7 +5,11 @@ import {getIsAllProductIDsLoading, getIsFilterItemsLoading, getIsInitialItemsLoa
 import styles from './filter.module.scss';
 import { fetchCurrentProducts } from '../../store/api-actions';
 import { ITEMS_PER_PAGE } from '../../const';
-import {setIsFilterItemsLoading, setIsInitialItemsLoading} from '../../store/actions';
+import {
+  setIsFilterItemsDisplayed,
+  setIsFilterItemsLoading,
+  setIsInitialItemsLoading
+} from '../../store/actions';
 
 
 const Filter = () => {
@@ -15,7 +19,7 @@ const Filter = () => {
   const dispatch = useDispatch();
 
   const [inputValue, setInputValue] = useState('');
-  const [selectedFilter, setSelectedFilter] = useState('name');
+  const [selectedFilter, setSelectedFilter] = useState('product');
   const [mistakeInfo, setMistakeInfo] = useState('');
 
   const verifyMistake = () => {
@@ -29,7 +33,7 @@ const Filter = () => {
   };
 
   const handleChangeInputValue = (evt) => {
-    const inputValue = evt.target.value;
+    let inputValue = evt.target.value;
     setInputValue(inputValue);
     setMistakeInfo('');
   };
@@ -48,8 +52,22 @@ const Filter = () => {
 
   const handleButtonSubmitClick = (evt) => {
     verifyMistake();
-    console.log(mistakeInfo);
-    console.log(inputValue);
+    let inputData = inputValue;
+
+    if (mistakeInfo === '') {
+      console.log(mistakeInfo);
+      console.log(inputValue);
+
+      if (selectedFilter === 'price') {
+        inputData = Number(inputValue);
+      }
+
+      dispatch(setIsFilterItemsDisplayed(true));
+      dispatch(fetchCurrentProducts({
+        "action": "filter",
+        "params": {[selectedFilter]: inputData}
+      }));
+    }
   };
 
   const handleSelectChange = (evt) => {

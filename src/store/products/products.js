@@ -6,7 +6,7 @@ import {
   setIsCurrentItemsLoading,
   setIsInitialItemsLoading,
   setIsFilterItemsLoading,
-  setIsFilteredItemsDisplayed
+  setIsFilterItemsDisplayed
 } from '../actions';
 
 const initialState = {
@@ -41,7 +41,7 @@ const products = createReducer(initialState, (builder) => {
     .addCase(setIsFilterItemsLoading, (state, action) => { // to Disable Filter Buttons
       state.isFilterItemsLoading = action.payload;
     })
-    .addCase(setIsFilteredItemsDisplayed, (state, action) => {
+    .addCase(setIsFilterItemsDisplayed, (state, action) => {
       state.isFilterItemsDisplayed = action.payload;
     })
   });
