@@ -33,6 +33,10 @@
   line-height: 22.4px;
 }
 
+.input:disabled {
+  color: #777777;
+}
+
 .input_wrapper {
   width: 182px;
   position: relative;

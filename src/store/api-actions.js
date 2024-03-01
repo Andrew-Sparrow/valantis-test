@@ -18,17 +18,17 @@ const requestDataAllIDs = {
 
 export const fetchAllProductIDs = () => (dispatch, _getState, api) => (
   api.post('/', requestDataAllIDs)
-    .then(({data}) => {
-      if(data) {
-        dispatch(loadAllProductIDs(Array.from(new Set(data.result)))); // save only unique values
+    .then((response) => {
+      if(response.data) {
+        dispatch(loadAllProductIDs(Array.from(new Set(response.response.data.result)))); // save only unique values
       }
     })
     .catch((err) => {
       console.log(err.message);
       api.post('/', requestDataAllIDs)
-        .then(({data}) => {
-          if(data) {
-            dispatch(loadAllProductIDs(Array.from(new Set(data.result))));
+        .then((response) => {
+          if(response) {
+            dispatch(loadAllProductIDs(Array.from(new Set(response.response.data.result))));
           }
         })
     })
@@ -36,10 +36,10 @@ export const fetchAllProductIDs = () => (dispatch, _getState, api) => (
 
 export const fetchCurrentProducts = (requestCurrentIDs) => (dispatch, _getState, api) => (
   api.post('/', requestCurrentIDs)
-    .then(({data}) => {
+    .then((response) => {
       let uniqueIDs = [];
-      if (data) {
-        uniqueIDs = Array.from(new Set(data.result));
+      if (response) {
+        uniqueIDs = Array.from(new Set(response.response.data.result));
       }
 
       return api.post('/', {
@@ -47,9 +47,9 @@ export const fetchCurrentProducts = (requestCurrentIDs) => (dispatch, _getState,
         "params": {"ids": uniqueIDs}
       })
     })
-    .then(({data}) => {
-      if(data) {
-        const listUniqueObj = getUniqueObjectsByID(data.result);
+    .then((response) => {
+      if(response) {
+        const listUniqueObj = getUniqueObjectsByID(response.data.result);
         dispatch(loadCurrentItemsOnPage(listUniqueObj));
       }
     })
@@ -57,10 +57,10 @@ export const fetchCurrentProducts = (requestCurrentIDs) => (dispatch, _getState,
       console.log(err.message);
 
       api.post('/', requestCurrentIDs)
-      .then(({data}) => {
+      .then((response) => {
         let uniqueIDs = [];
-        if (data) {
-          uniqueIDs = Array.from(new Set(data.result));
+        if (response) {
+          uniqueIDs = Array.from(new Set(response.data.result));
         }
 
         return api.post('/', {
@@ -68,9 +68,9 @@ export const fetchCurrentProducts = (requestCurrentIDs) => (dispatch, _getState,
           "params": {"ids": uniqueIDs}
         })
       })
-      .then(({data}) => {
-        if(data) {
-          const listUniqueObj = getUniqueObjectsByID(data.result);
+      .then((response) => {
+        if(response) {
+          const listUniqueObj = getUniqueObjectsByID(response.data.result);
           dispatch(loadCurrentItemsOnPage(listUniqueObj));
         }
       })

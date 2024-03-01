@@ -16,7 +16,7 @@ import {
 const Filter = () => {
   const isAllProductIDsLoading = useSelector(getIsAllProductIDsLoading);
   const isInitialItemsLoading = useSelector(getIsInitialItemsLoading);
-  const isFilteredItemsLoading = useSelector(getIsFilterItemsLoading);
+  const isFilterItemsLoading = useSelector(getIsFilterItemsLoading);
   const dispatch = useDispatch();
 
   const [inputValue, setInputValue] = useState('');
@@ -54,15 +54,6 @@ const Filter = () => {
       }))
   };
 
-  // useEffect(() => {
-  //   verifyMistake();
-
-  //   return () => {
-  //     setMistakeInfo(null);
-  //     setInputValue('');
-  //   }
-  // }, [mistakeInfo]);
-
   const handleButtonSubmitClick = (evt) => {
     const isMistake = verifyMistake();
     let inputData = inputValue;
@@ -96,8 +87,8 @@ const Filter = () => {
   return (
     <div className={styles.filter}>
       <p className={styles.mistake}>{mistakeInfo}</p>
-      <section disabled={isFilteredItemsLoading} className={styles.row}>
-        <select name="filters" className={styles.select} onChange={handleSelectChange} value={selectedFilter}>
+      <section className={styles.row}>
+        <select disabled={isFilterItemsLoading} name="filters" className={styles.select} onChange={handleSelectChange} value={selectedFilter}>
           <option value="product">Name</option>
           <option value="price">Price</option>
           <option value="brand">Brand</option>
@@ -109,15 +100,15 @@ const Filter = () => {
             onChange={handleChangeInputValue}
             value={inputValue}
             required={true}
-            disabled={isFilteredItemsLoading}
+            disabled={isFilterItemsLoading}
           />
         </div>
       </section>
       <section>
-        <button disabled={isFilteredItemsLoading} className={styles.button}
+        <button disabled={isFilterItemsLoading} className={styles.button}
           onClick={handleButtonResetClick}>Reset filter</button>
-        <button disabled={isFilteredItemsLoading} className={`${ styles.button } ${ styles.button_submit}`}
-          onClick={handleButtonSubmitClick}>Submit filter</button>
+        <button disabled={isFilterItemsLoading} className={`${ styles.button } ${ styles.button_submit}`}
+          onClick={handleButtonSubmitClick}>{isFilterItemsLoading ? 'Loading...' : 'Submit filter'}</button>
       </section>
     </div>
   )
