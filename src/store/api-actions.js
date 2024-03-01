@@ -20,7 +20,7 @@ export const fetchAllProductIDs = () => (dispatch, _getState, api) => (
   api.post('/', requestDataAllIDs)
     .then((response) => {
       if(response.data) {
-        dispatch(loadAllProductIDs(Array.from(new Set(response.response.data.result)))); // save only unique values
+        dispatch(loadAllProductIDs(Array.from(new Set(response.data.result)))); // save only unique values
       }
     })
     .catch((err) => {
@@ -28,7 +28,7 @@ export const fetchAllProductIDs = () => (dispatch, _getState, api) => (
       api.post('/', requestDataAllIDs)
         .then((response) => {
           if(response) {
-            dispatch(loadAllProductIDs(Array.from(new Set(response.response.data.result))));
+            dispatch(loadAllProductIDs(Array.from(new Set(response.data.result))));
           }
         })
     })
@@ -39,7 +39,7 @@ export const fetchCurrentProducts = (requestCurrentIDs) => (dispatch, _getState,
     .then((response) => {
       let uniqueIDs = [];
       if (response) {
-        uniqueIDs = Array.from(new Set(response.response.data.result));
+        uniqueIDs = Array.from(new Set(response.data.result));
       }
 
       return api.post('/', {
