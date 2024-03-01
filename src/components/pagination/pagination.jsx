@@ -7,7 +7,7 @@ import {getAllProductIDs, getIsAllProductIDsLoading, getIsCurrentItemsLoading, g
 import {fetchCurrentProducts} from '../../store/api-actions';
 import {ITEMS_PER_PAGE} from '../../const';
 import {setIsCurrentItemsLoading} from '../../store/actions';
-import { IconChevronLeft, IconChevronRight } from '../icon-chevron/Icon-chevron';
+import { IconChevronLeft, IconChevronRight } from '../icon-chevron/icon-chevron';
 
 
 const Pagination = () => {

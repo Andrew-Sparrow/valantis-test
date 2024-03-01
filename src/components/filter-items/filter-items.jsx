@@ -1,36 +1,14 @@
 import {useState, useEffect} from 'react';
 import ReactPaginate from 'react-paginate';
 import {useSelector} from 'react-redux';
-import { HandySvg } from 'handy-svg';
 
-import iconChevronRightSVG from '../../img/icons/Chevron_Right.svg';
-import iconChevronLeftSVG from '../../img/icons/Chevron_Left.svg';
 import styles from'../pagination/pagination.module.scss';
 
 import {getProductItemsOnPage} from '../../store/products/selectors';
 import {ProductList} from '../product-list/product-list';
 import {ITEMS_PER_PAGE} from '../../const';
-// import {IconChevronLeft, IconChevronRight} from '../icon-chevron/icon-chevron';
-// import { ReactPagination } from '../react-pagination/react-pagination';
+import { IconChevronLeft, IconChevronRight } from '../icon-chevron/icon-chevron';
 
-
-const IconChevronLeft = () => (
-  <HandySvg
-    className="prev-icon"
-    src={iconChevronLeftSVG}
-    width="24"
-    height="24"
-  />
-);
-
-const IconChevronRight = () => (
-  <HandySvg
-    className="next-icon"
-    src={iconChevronRightSVG}
-    width="24"
-    height="24"
-  />
-);
 
 const FilterItems = () => {
   const items = useSelector(getProductItemsOnPage);
