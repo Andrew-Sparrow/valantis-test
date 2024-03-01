@@ -6,6 +6,7 @@ import styles from './filter.module.scss';
 import { fetchCurrentProducts } from '../../store/api-actions';
 import { ITEMS_PER_PAGE } from '../../const';
 import {
+  setIsCurrentItemsLoading,
   setIsFilterItemsDisplayed,
   setIsFilterItemsLoading,
   setIsInitialItemsLoading
@@ -72,7 +73,8 @@ const Filter = () => {
       }
 
       dispatch(setIsFilterItemsDisplayed(true));
-      dispatch(setIsFilterItemsLoading(true));
+      dispatch(setIsFilterItemsLoading(true)); // to disable filter buttons
+      dispatch(setIsCurrentItemsLoading(true));
       dispatch(fetchCurrentProducts({
         "action": "filter",
         "params": {[selectedFilter]: inputData}
