@@ -31,6 +31,7 @@ const products = createReducer(initialState, (builder) => {
       state.isCurrentItemsLoading = false;
       state.isInitialItemsLoading = false;
       state.isFilterItemsLoading = false;
+      state.isAllProductIDsLoading = false;
     })
     .addCase(setIsCurrentItemsLoading, (state, action) => {
       state.isCurrentItemsLoading = action.payload;

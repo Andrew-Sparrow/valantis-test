@@ -1,7 +1,12 @@
-import React , {useEffect, useState} from 'react';
+import React , {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {getIsAllProductIDsLoading, getIsFilterItemsLoading, getIsInitialItemsLoading} from '../../store/products/selectors';
+import {
+  getIsAllProductIDsLoading,
+  getIsFilterItemsLoading,
+  getIsInitialItemsLoading
+} from '../../store/products/selectors';
+
 import styles from './filter.module.scss';
 import { fetchCurrentProducts } from '../../store/api-actions';
 import { ITEMS_PER_PAGE } from '../../const';
