@@ -1,5 +1,5 @@
 import {
-  loadAllProductIDs, loadCurrentItemsOnPage, setIsCurrentItemsLoading, setIsFilterItemsLoading,
+  loadAllProductIDs, loadCurrentItemsOnPage, setIsCurrentItemsLoading, setIsFilterItemsLoading, setIsInitialItemsLoading,
 } from './actions';
 
 import { getUniqueObjectsByID } from '../util/util';
@@ -32,6 +32,9 @@ export const fetchAllProductIDs = () => (dispatch, _getState, api) => (
           }
         }).catch((err) => {
           dispatch(loadAllProductIDs([]));
+          dispatch(setIsCurrentItemsLoading(false));
+          dispatch(setIsFilterItemsLoading(false));
+          dispatch(setIsInitialItemsLoading(false));
         })
     })
 );
@@ -74,6 +77,9 @@ export const fetchCurrentProducts = (requestCurrentIDs) => (dispatch, _getState,
         if(response) {
           const listUniqueObj = getUniqueObjectsByID(response.data.result);
           dispatch(loadCurrentItemsOnPage(listUniqueObj));
+          dispatch(setIsCurrentItemsLoading(false));
+          dispatch(setIsFilterItemsLoading(false));
+          dispatch(setIsInitialItemsLoading(false));
         }
       }).catch((err) => {
         dispatch(loadAllProductIDs([]));
