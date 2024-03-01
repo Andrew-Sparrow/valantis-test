@@ -26,7 +26,7 @@ const Pagination = () => {
       "action": "get_ids",
       "params": {"offset": itemOffset, "limit": ITEMS_PER_PAGE}
     }))
-  }, [itemOffset, isCurrentItemsLoading]);
+  }, [itemOffset, isCurrentItemsLoading, dispatch]);
 
   // example https://www.npmjs.com/package/react-paginate
   const handlePageClick = (event) => {
