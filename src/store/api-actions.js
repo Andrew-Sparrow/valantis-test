@@ -30,6 +30,8 @@ export const fetchAllProductIDs = () => (dispatch, _getState, api) => (
           if(response) {
             dispatch(loadAllProductIDs(Array.from(new Set(response.data.result))));
           }
+        }).catch((err) => {
+          dispatch(loadAllProductIDs([]));
         })
     })
 );
@@ -73,6 +75,8 @@ export const fetchCurrentProducts = (requestCurrentIDs) => (dispatch, _getState,
           const listUniqueObj = getUniqueObjectsByID(response.data.result);
           dispatch(loadCurrentItemsOnPage(listUniqueObj));
         }
+      }).catch((err) => {
+        dispatch(loadAllProductIDs([]));
       })
     })
 );

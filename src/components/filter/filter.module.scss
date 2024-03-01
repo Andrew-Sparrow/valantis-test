@@ -75,6 +75,11 @@
   margin-right: 0;
 }
 
+.button_submit:disabled {
+  color: #777777;
+  cursor: pointer;
+}
+
 .button:hover {
   background-color: $light-gray-bg;
   cursor: pointer;

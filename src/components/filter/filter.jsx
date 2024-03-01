@@ -45,6 +45,7 @@ const Filter = () => {
   const handleButtonResetClick = (evt) => {
       setMistakeInfo(null);
       setInputValue('');
+      setSelectedFilter('product');
 
       dispatch(setIsInitialItemsLoading(true));
       dispatch(setIsFilterItemsDisplayed(false));
@@ -105,7 +106,7 @@ const Filter = () => {
         </div>
       </section>
       <section>
-        <button disabled={isFilterItemsLoading} className={styles.button}
+        <button className={styles.button}
           onClick={handleButtonResetClick}>Reset filter</button>
         <button disabled={isFilterItemsLoading} className={`${ styles.button } ${ styles.button_submit}`}
           onClick={handleButtonSubmitClick}>{isFilterItemsLoading ? 'Loading...' : 'Submit filter'}</button>

@@ -4,7 +4,7 @@ import { getHashMD5 } from '../util/util';
 
 const BACKEND_URL = 'http://api.valantis.store:40000';
 
-const REQUEST_TIMEOUT = 7000;
+const REQUEST_TIMEOUT = 5000;
 
 
 export const getAxiosInstance = () => {
