@@ -1,9 +1,8 @@
 import {
-  loadAllProductIDs, loadCurrentItemsOnPage, setIsFilterItemsLoading,
+  loadAllProductIDs, loadCurrentItemsOnPage, setIsCurrentItemsLoading, setIsFilterItemsLoading,
 } from './actions';
 
 import { getUniqueObjectsByID } from '../util/util';
-import {getIsFilterItemsLoading} from './products/selectors';
 
 
 const requestDataAllIDs = {
@@ -78,7 +77,8 @@ export const fetchCurrentProducts = (requestCurrentIDs) => (dispatch, _getState,
         }
       }).catch((err) => {
         dispatch(loadAllProductIDs([]));
-        dispatch(setIsFilterItemsLoading(false))
+        dispatch(setIsFilterItemsLoading(false));
+        dispatch(setIsCurrentItemsLoading(false));
       })
     })
 );
