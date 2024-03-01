@@ -12,7 +12,6 @@ import {
 const initialState = {
   allProductIDs: [],
   productItemsOnPage: [],
-  filteredItems: [],
   isAllProductIDsLoading: true,
   isCurrentItemsLoading: true,
   isInitialItemsLoading: true,

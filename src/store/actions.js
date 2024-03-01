@@ -7,7 +7,6 @@ export const ActionType = {
   SET_IS_INITIAL_ITEMS_LOADING: 'products/isInitialItemsLoading',
   SET_IS_FILTER_ITEMS_LOADING: 'products/isFilterItemsLoading',
   SET_IS_FILTER_ITEMS_DISPLAYED: 'products/setIsFilterItemsDisplayed',
-  LOAD_FILTER_ITEMS: 'products/loadFilteredItems',
 };
 
 export const loadAllProductIDs = createAction(
