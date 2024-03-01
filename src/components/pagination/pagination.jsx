@@ -1,5 +1,4 @@
 import {useState, useEffect} from 'react';
-import ReactPaginate from 'react-paginate';
 import {useSelector, useDispatch} from 'react-redux';
 
 import styles from './pagination.module.scss';
@@ -7,7 +6,7 @@ import {getAllProductIDs, getIsAllProductIDsLoading, getIsCurrentItemsLoading, g
 import {fetchCurrentProducts} from '../../store/api-actions';
 import {ITEMS_PER_PAGE} from '../../const';
 import {setIsCurrentItemsLoading} from '../../store/actions';
-import { IconChevronLeft, IconChevronRight } from '../icon-chevron/icon-chevron';
+import {ReactPagination} from '../react-pagination/react-pagination';
 
 
 const Pagination = () => {
@@ -39,27 +38,11 @@ const Pagination = () => {
   return (
     <div className={ isCurrentItemsLoading ? styles.loading : ``}>
       {isAllProductIDsLoading || isInitialItemsLoading ? '' :
-        <ReactPaginate
-          previousLabel={<IconChevronLeft />}
-          nextLabel={<IconChevronRight />}
-          onPageChange={handlePageClick}
-          containerClassName={styles.pagination}
-          pageRangeDisplayed={0}
-          marginPagesDisplayed={1}
-          pageCount={pageTotalAmount}
-          pageClassName={styles.page_item}
-          pageLinkClassName={styles.page_link}
-          previousClassName={styles.previous}
-          previousLinkClassName={styles.previous_link}
-          nextClassName={styles.next}
-          nextLinkClassName={styles.next_link}
-          activeClassName={styles.active}
-          renderOnZeroPageCount={null}
-          disabledClassName={styles.disabled}
-          disabledLinkClassName={styles.disabled_link}
-          disableInitialCallback={isCurrentItemsLoading}
-        />
-      }
+      <ReactPagination
+        handlePageClick={handlePageClick}
+        pageTotalAmount={pageTotalAmount}
+        isCurrentItemsLoading={isCurrentItemsLoading}
+      />}
     </div>
   );
 };
