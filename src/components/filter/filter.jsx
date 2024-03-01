@@ -1,4 +1,4 @@
-import React , {useState} from 'react';
+import React , {useEffect, useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
 import {getIsAllProductIDsLoading, getIsFilterItemsLoading, getIsInitialItemsLoading} from '../../store/products/selectors';
@@ -20,26 +20,29 @@ const Filter = () => {
 
   const [inputValue, setInputValue] = useState('');
   const [selectedFilter, setSelectedFilter] = useState('product');
-  const [mistakeInfo, setMistakeInfo] = useState('');
+  const [mistakeInfo, setMistakeInfo] = useState(null);
 
   const verifyMistake = () => {
-    if (selectedFilter === 'price' && isNaN(inputValue)) {
-      setMistakeInfo('Input field should be a number');
-    }
-
     if(inputValue === '') {
       setMistakeInfo('Input field should not be empty');
+      return true;
+    } else if (selectedFilter === 'price' && isNaN(inputValue)) {
+      setMistakeInfo('Input field should be a number');
+      return true;
+    } else {
+      return false;
     }
   };
 
   const handleChangeInputValue = (evt) => {
     let inputValue = evt.target.value;
+
     setInputValue(inputValue);
-    setMistakeInfo('');
+    setMistakeInfo(null);
   };
 
   const handleButtonResetClick = (evt) => {
-      setMistakeInfo('');
+      setMistakeInfo(null);
       setInputValue('');
 
       dispatch(setIsInitialItemsLoading(true));
@@ -50,15 +53,21 @@ const Filter = () => {
       }))
   };
 
+  // useEffect(() => {
+  //   verifyMistake();
+
+  //   return () => {
+  //     setMistakeInfo(null);
+  //     setInputValue('');
+  //   }
+  // }, [mistakeInfo]);
+
   const handleButtonSubmitClick = (evt) => {
-    verifyMistake();
+    const isMistake = verifyMistake();
     let inputData = inputValue;
 
-    if (mistakeInfo === '') {
-      console.log('no mistakes');
-      console.log(inputValue);
-
-      if (selectedFilter === 'price') {
+    if (!isMistake) {
+      if (selectedFilter === 'price' && mistakeInfo === null) {
         inputData = Number(inputValue);
       }
 
@@ -74,7 +83,7 @@ const Filter = () => {
   const handleSelectChange = (evt) => {
     verifyMistake();
     setSelectedFilter(evt.target.value);
-    setMistakeInfo('');
+    setMistakeInfo(null);
     setInputValue('');
   };
 
