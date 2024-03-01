@@ -32,4 +32,4 @@ The project is displaying list of products
 ##### https://andrew-sparrow.github.io/ap-portfolio
 ---
 
-![Alt text](project/public/assets/screenshot.png?raw=true "Title")
+![Alt text](public/assets/screenshot.png?raw=true "Title")
