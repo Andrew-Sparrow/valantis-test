@@ -7,7 +7,7 @@ const getMD5 = (data) => {
 };
 
 const getPassword = () => {
-  return process.env.REACT_APP_PASSWORD + '_' + moment().format('YYYYMMDD');
+  return 'Valantis_' + moment().format('YYYYMMDD');
 }
 
 export const getHashMD5 = () => {
