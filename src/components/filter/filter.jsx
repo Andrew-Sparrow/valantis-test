@@ -43,7 +43,7 @@ const Filter = () => {
       setInputValue('');
 
       dispatch(setIsInitialItemsLoading(true));
-      dispatch(setIsFilterItemsLoading(true));
+      dispatch(setIsFilterItemsDisplayed(false));
       dispatch(fetchCurrentProducts({
         "action": "get_ids",
         "params": {"offset": 0, "limit": ITEMS_PER_PAGE}
@@ -55,7 +55,7 @@ const Filter = () => {
     let inputData = inputValue;
 
     if (mistakeInfo === '') {
-      console.log(mistakeInfo);
+      console.log('no mistakes');
       console.log(inputValue);
 
       if (selectedFilter === 'price') {
@@ -63,6 +63,7 @@ const Filter = () => {
       }
 
       dispatch(setIsFilterItemsDisplayed(true));
+      dispatch(setIsFilterItemsLoading(true));
       dispatch(fetchCurrentProducts({
         "action": "filter",
         "params": {[selectedFilter]: inputData}
