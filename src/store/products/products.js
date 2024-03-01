@@ -5,7 +5,8 @@ import {
   loadCurrentItemsOnPage,
   setIsCurrentItemsLoading,
   setIsInitialItemsLoading,
-  setIsFilteredItemsLoading
+  setIsFilterItemsLoading,
+  setIsFilteredItemsDisplayed
 } from '../actions';
 
 const initialState = {
@@ -15,7 +16,8 @@ const initialState = {
   isAllProductIDsLoading: true,
   isCurrentItemsLoading: true,
   isInitialItemsLoading: true,
-  isFilteredItemsLoading: false, // to Disable Filter Buttons
+  isFilterItemsLoading: false, // to Disable Filter Buttons
+  isFilterItemsDisplayed: false // to switch between filtered items and another
 };
 
 const products = createReducer(initialState, (builder) => {
@@ -28,7 +30,7 @@ const products = createReducer(initialState, (builder) => {
       state.productItemsOnPage = [...action.payload];
       state.isCurrentItemsLoading = false;
       state.isInitialItemsLoading = false;
-      state.isFilteredItemsLoading = false;
+      state.isFilterItemsLoading = false;
     })
     .addCase(setIsCurrentItemsLoading, (state, action) => {
       state.isCurrentItemsLoading = action.payload;
@@ -36,8 +38,11 @@ const products = createReducer(initialState, (builder) => {
     .addCase(setIsInitialItemsLoading, (state, action) => {
       state.isInitialItemsLoading = action.payload;
     })
-    .addCase(setIsFilteredItemsLoading, (state, action) => { // to Disable Filter Buttons
-      state.isFilteredItemsLoading = action.payload;
+    .addCase(setIsFilterItemsLoading, (state, action) => { // to Disable Filter Buttons
+      state.isFilterItemsLoading = action.payload;
+    })
+    .addCase(setIsFilteredItemsDisplayed, (state, action) => {
+      state.isFilterItemsDisplayed = action.payload;
     })
   });
 

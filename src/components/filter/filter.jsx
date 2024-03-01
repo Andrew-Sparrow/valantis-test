@@ -1,17 +1,17 @@
 import React , {useState} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {getIsAllProductIDsLoading, getIsFilteredItemsLoading, getIsInitialItemsLoading} from '../../store/products/selectors';
+import {getIsAllProductIDsLoading, getIsFilterItemsLoading, getIsInitialItemsLoading} from '../../store/products/selectors';
 import styles from './filter.module.scss';
 import { fetchCurrentProducts } from '../../store/api-actions';
 import { ITEMS_PER_PAGE } from '../../const';
-import {setIsFilteredItemsLoading, setIsInitialItemsLoading} from '../../store/actions';
+import {setIsFilterItemsLoading, setIsInitialItemsLoading} from '../../store/actions';
 
 
 const Filter = () => {
   const isAllProductIDsLoading = useSelector(getIsAllProductIDsLoading);
   const isInitialItemsLoading = useSelector(getIsInitialItemsLoading);
-  const isFilteredItemsLoading = useSelector(getIsFilteredItemsLoading);
+  const isFilteredItemsLoading = useSelector(getIsFilterItemsLoading);
   const dispatch = useDispatch();
 
   const [inputValue, setInputValue] = useState('');
@@ -39,7 +39,7 @@ const Filter = () => {
       setInputValue('');
 
       dispatch(setIsInitialItemsLoading(true));
-      dispatch(setIsFilteredItemsLoading(true));
+      dispatch(setIsFilterItemsLoading(true));
       dispatch(fetchCurrentProducts({
         "action": "get_ids",
         "params": {"offset": 0, "limit": ITEMS_PER_PAGE}

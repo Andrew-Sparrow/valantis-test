@@ -5,8 +5,9 @@ export const ActionType = {
   LOAD_CURRENT_ITEMS_ON_PAGE: 'products/loadCurrentItemsOnPage',
   SET_IS_CURRENT_ITEMS_LOADING: 'products/isCurrentItemsLoading',
   SET_IS_INITIAL_ITEMS_LOADING: 'products/isInitialItemsLoading',
-  SET_IS_FILTERED_ITEMS_LOADING: 'products/isFilteredItemsLoading',
-  LOAD_FILTERED_ITEMS: 'products/loadFilteredItems',
+  SET_IS_FILTER_ITEMS_LOADING: 'products/isFilterItemsLoading',
+  SET_IS_FILTER_ITEMS_DISPLAYED: 'products/setIsFilterItemsDisplayed',
+  LOAD_FILTER_ITEMS: 'products/loadFilteredItems',
 };
 
 export const loadAllProductIDs = createAction(
@@ -29,12 +30,17 @@ export const setIsInitialItemsLoading = createAction(
   (isLoading) => ({ payload: isLoading }),
 );
 
-export const setIsFilteredItemsLoading = createAction( // to Disable Filter Buttons
-  ActionType.SET_IS_FILTERED_ITEMS_LOADING,
+export const setIsFilterItemsLoading = createAction( // to Disable Filter Buttons
+  ActionType.SET_IS_FILTER_ITEMS_LOADING,
   (isLoading) => ({ payload: isLoading }),
 );
 
-export const loadFilteredItems = createAction(
-  ActionType.LOAD_FILTERED_ITEMS,
-  (filteredItems) => ({ payload: filteredItems }),
+export const isFilterItemsDisplayed = createAction( // to Disable Filter Buttons
+  ActionType.SET_IS_FILTER_ITEMS_DISPLAYED,
+  (isDisplayed) => ({ payload: isDisplayed }),
+);
+
+export const loadFilterItems = createAction(
+  ActionType.LOAD_FILTER_ITEMS,
+  (filterItems) => ({ payload: filterItems }),
 );
