@@ -2,7 +2,7 @@ import styles from './main.module.scss';
 import {PaginatedItems} from '../paginated-items/paginated-items';
 import {Filter} from '../filter/filter';
 import {getIsFilterItemsDisplayed} from '../../store/products/selectors';
-import {FilterItems} from '../filter-list/filter-list';
+import {FilterItems} from '../filter-items/filter-items';
 import {useSelector} from 'react-redux';
 
 
