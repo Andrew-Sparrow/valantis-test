@@ -19,7 +19,7 @@ const requestDataAllIDs = {
 export const fetchAllProductIDs = () => (dispatch, _getState, api) => (
   api.post('/', requestDataAllIDs)
     .then((response) => {
-      if(response.data) {
+      if(response) {
         dispatch(loadAllProductIDs(Array.from(new Set(response.data.result)))); // save only unique values
       }
     })
