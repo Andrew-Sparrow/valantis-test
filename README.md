@@ -6,7 +6,7 @@
 ---
 
 #### Watch deployed project at GitHub Pages
-###### https://andrew-sparrow.github.io/valantis-test-deploy/#/
+###### https://andrew-sparrow.github.io/valantis-test
 
 ---
 
