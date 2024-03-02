@@ -1,12 +1,10 @@
 import React from 'react';
 import { HandySvg } from 'handy-svg';
-import iconChevronRightSVG from '../../img/icons/Chevron_Right.svg';
-import iconChevronLeftSVG from '../../img/icons/Chevron_Left.svg';
 
 export const IconChevronLeft = () => (
   <HandySvg
     className="prev-icon"
-    src={iconChevronLeftSVG}
+    src={process.env.PUBLIC_URL + '/img/icons/Chevron_Left.svg'}
     width="24"
     height="24"
   />
@@ -15,7 +13,8 @@ export const IconChevronLeft = () => (
 export const IconChevronRight = () => (
   <HandySvg
     className="next-icon"
-    src={iconChevronRightSVG}
+    src={process.env.PUBLIC_URL + '/img/icons/Chevron_Right.svg'}
+
     width="24"
     height="24"
   />
