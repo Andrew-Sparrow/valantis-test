@@ -9,6 +9,7 @@ export const IconChevronLeft = () => (
     src={ChevronLeft}
     width="24"
     height="24"
+    alt="chevron_left"
   />
 );
 
@@ -18,5 +19,6 @@ export const IconChevronRight = () => (
     src={ChevronRight}
     width="24"
     height="24"
+    alt="chevron_right"
   />
 );
