@@ -1,7 +1,7 @@
 import {
-  BrowserRouter,
   Routes,
   Route,
+  HashRouter
 } from "react-router-dom";
 
 import { Main } from '../main/main';
@@ -10,12 +10,12 @@ import { NotFound } from '../not-found/not-found';
 
 function App() {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path={AppRoute.MAIN} element={<Main />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
