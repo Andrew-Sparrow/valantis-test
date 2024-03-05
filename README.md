@@ -26,6 +26,7 @@ The project is displaying list of products
 - filtering products by name, price, brand
 - authorization
 - pagination
+- input validation
 
 ---
 ##### The full list of projects in my portfolio:
