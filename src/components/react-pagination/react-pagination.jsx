@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import ReactPaginate from 'react-paginate';
 
 import { IconChevronLeft, IconChevronRight } from '../icon-chevron/icon-chevron';
@@ -27,6 +29,12 @@ const ReactPagination = ({handlePageClick, pageTotalAmount, isCurrentItemsLoadin
     disableInitialCallback={isCurrentItemsLoading}
   />
   )
+};
+
+ReactPagination.propTypes = {
+  pageTotalAmount: PropTypes.number.isRequired,
+  isCurrentItemsLoading: PropTypes.bool,
+  handlePageClick: PropTypes.func,
 };
 
 export {ReactPagination};
